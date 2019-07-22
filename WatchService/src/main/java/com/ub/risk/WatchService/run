@@ -1,0 +1,6 @@
+@ECHO ON
+set CLASSPATH=.
+set CLASSPATH=%CLASSPATH%;commons-io-2.4.jar;WatchService-0.0.1-SNAPSHOT.jar
+
+java -Xms128m -Xmx384m -Xnoclassgc com.ub.risk.WatchService.Java8WatchServiceExample
+pause
