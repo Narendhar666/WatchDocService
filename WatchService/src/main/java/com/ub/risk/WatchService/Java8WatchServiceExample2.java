@@ -1,4 +1,4 @@
-package com.ub.risk.WatchService;
+/*package com.ub.risk.WatchService;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
@@ -6,7 +6,6 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.channels.SeekableByteChannel;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,16 +17,18 @@ import java.nio.file.WatchService;
 
 import org.apache.commons.io.FileUtils;
 
-public class Java8WatchServiceExample {
+public class Java8WatchServiceExample2 {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		try {
 			WatchService watcher = FileSystems.getDefault().newWatchService();
 			Path dir = Paths.get("E:\\watchservice\\source");
-
+			
+			
 			File source = new File("E:\\watchservice\\source");
 			File dest = new File("E:\\watchservice\\destination");
-
+			
+			
 			dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
 
 			System.out.println("Watch Service registered for dir: " + dir.getFileName());
@@ -53,6 +54,7 @@ public class Java8WatchServiceExample {
 
 						try {
 							System.out.println("Processing.....");
+							
 
 							// only copy
 							// FileUtils.copyDirectory(source, dest);
@@ -62,29 +64,17 @@ public class Java8WatchServiceExample {
 							Path sourcepath = Paths.get(source.toURI());
 							Path destpath = Paths.get(dest.toURI());
 
-							// Files.copy(sourcepath, destpath,
-							// StandardCopyOption.REPLACE_EXISTING);
-
-							// Files.move(sourcepath, destpath,
-							// StandardCopyOption.REPLACE_EXISTING);
-							// ##Files.copy(sourcepath, destpath,
-							// StandardCopyOption.REPLACE_EXISTING);
-							Thread.sleep(2000);
-							FileUtils.copyDirectory(source, dest);
-							// SeekableByteChannel destFileChannel =
-							// Files.newByteChannel(destpath);
-							// destFileChannel.close();
-
+							Files.copy(sourcepath, destpath, StandardCopyOption.REPLACE_EXISTING);
 						} catch (IOException e) {
-							System.out.print("error:" + e.getMessage());
+							e.printStackTrace();
 						}
 
 					}
 
-					if (kind == ENTRY_MODIFY) {
+					if (kind == ENTRY_MODIFY ) {
 						System.out.println("My source file has changed!!!");
-						FileUtils.copyDirectory(source, dest);
-						// break;
+						 FileUtils.copyDirectory(source, dest);
+						 break;
 					}
 				}
 
@@ -99,3 +89,4 @@ public class Java8WatchServiceExample {
 		}
 	}
 }
+*/
